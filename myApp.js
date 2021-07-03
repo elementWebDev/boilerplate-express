@@ -2,8 +2,7 @@ const express = require('express')
 const app = express()
 require('dotenv').config()
 
-console.log("Hello World")
-
+console.log('Hello World')
 
 /** 7.) Implement a Root-Level Request Logger Middleware */
 
@@ -12,10 +11,8 @@ app.use((req, res, next) => {
   next()
 })
 
-
 /** 4.) Serve static assets */
 app.use('/public', express.static(__dirname + '/public'))
-
 
 /** 5) serve JSON on a specific route */
 
@@ -26,16 +23,12 @@ app.use('/public', express.static(__dirname + '/public'))
 // })
 
 /** 6) Use the .env file to configure the app */
- 
+
 app.get('/json', (req, res) => {
   if (process.env.MESSAGE_STYLE === 'uppercase') {
-    res.json(
-      { "message": "HELLO JSON" }
-    )
+    res.json({ message: 'HELLO JSON' })
   } else {
-    res.json(
-      { "message": "Hello json"}
-    )
+    res.json({ message: 'Hello json' })
   }
 })
 
@@ -45,33 +38,4 @@ app.get('/', (req, res) => {
   res.sendFile(absolutePath)
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- module.exports = app
+module.exports = app
