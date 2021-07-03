@@ -8,8 +8,7 @@ console.log("Hello World")
 /** 7.) Implement a Root-Level Request Logger Middleware */
 
 app.use((req, res, next) => {
-  const string = req.method + ' ' + req.path + ' - ' + req.ip
-  console.log(string)
+  console.log(req.method + ' ' + req.path + ' - ' + req.ip)
   next()
 })
 
