@@ -1,14 +1,34 @@
-var express = require('express')
-var app = express()
+const express = require('express')
+const app = express()
+require('dotenv').config()
 
 console.log("Hello World")
 
-// Serve static assets
-app.use('/public', express.static(__dirname +'/public'))
 
-// Serve JSON on a Specific Route
+/** 7.) Implement a Root-Level Request Logger Middleware */
+
+app.use((req, res, next) => {
+  const string = req.method + ' ' + req.path + ' - ' + req.ip
+  console.log(string)
+  next()
+})
+
+
+/** 4.) Serve static assets */
+app.use('/public', express.static(__dirname + '/public'))
+
+
+/** 5) serve JSON on a specific route */
+
+// app.get('/json', (req, res) => {
+//   res.json(
+//     { "message": "Hello json" }
+//   )
+// })
+
+/** 6) Use the .env file to configure the app */
+ 
 app.get('/json', (req, res) => {
-  // Send JSON response
   if (process.env.MESSAGE_STYLE === 'uppercase') {
     res.json(
       { "message": "HELLO JSON" }
@@ -18,7 +38,6 @@ app.get('/json', (req, res) => {
       { "message": "Hello json"}
     )
   }
-
 })
 
 // Serve an HTML File
@@ -56,8 +75,4 @@ app.get('/', (req, res) => {
 
 
 
-
-
-
-
- module.exports = app;
+ module.exports = app
