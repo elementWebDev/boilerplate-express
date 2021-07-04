@@ -1,12 +1,19 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const bodyParser = require('body-parser')
 
 console.log('Hello World')
 
 /** 7.) Implement a Root-Level Request Logger Middleware */
 app.use((req, res, next) => {
   console.log(req.method + ' ' + req.path + ' - ' + req.ip)
+  next()
+})
+
+// --> 11.) Mount the body-parser middleware here
+app.use((req, res, next) => {
+  bodyParser.urlencoded({extended: false})
   next()
 })
 
