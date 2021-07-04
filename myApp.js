@@ -40,15 +40,27 @@ function getCurrentTimeString() {
   return new Date().toString()
 }
 
-app.get(
-  '/now',
-  (req, res, next) => {
+app.get('/now', (req, res, next) => {
     req.time = getCurrentTimeString()
     next()
-  },
-  (req, res) => {
+  }, (req, res) => {
     res.json({ time: req.time })
   }
 )
+
+/** 9.) Get Route Parameter Input from the Client */
+app.get('/:word/echo', (req, res) => {
+  // console.log(req.params)
+  res.json({ echo: req.params.word })
+})
+
+/** 10.) Get Query Parameter Input from the Client */
+
+
+/** 11.) Use body-parser to Parse POST Requests */
+
+
+/** 12.) Get Data from POST Requests */
+
 
 module.exports = app
