@@ -12,10 +12,12 @@ app.use((req, res, next) => {
 })
 
 // --> 11.) Mount the body-parser middleware here
-app.use((req, res, next) => {
-  bodyParser.urlencoded({extended: false})
-  next()
-})
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+
 
 /** 4.) Serve static assets */
 app.use('/public', express.static(__dirname + '/public'))
