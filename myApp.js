@@ -50,12 +50,13 @@ app.get('/now', (req, res, next) => {
 
 /** 9.) Get Route Parameter Input from the Client */
 app.get('/:word/echo', (req, res) => {
-  // console.log(req.params)
   res.json({ echo: req.params.word })
 })
 
 /** 10.) Get Query Parameter Input from the Client */
-
+app.get('/name', (req, res) => {
+  res.json({ name: req.query.first + " " + req.query.last })
+})
 
 /** 11.) Use body-parser to Parse POST Requests */
 
